@@ -3,6 +3,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import Exceptions.*;
 
 public class Dict<T1,T2> implements IDict<T1,T2> {
     Map<T1, T2> dictionary;
@@ -13,17 +14,17 @@ public class Dict<T1,T2> implements IDict<T1,T2> {
 
 
     @Override
-    public void add(T1 v1, T2 v2) throws RuntimeException {
+    public void add(T1 v1, T2 v2) throws AdtException {
          if (dictionary.containsKey(v1))
-             throw new RuntimeException("Element already exists");
+             throw new AdtException("Element already exists");
          this.dictionary.put(v1, v2);
 
     }
 
     @Override
-    public void update(T1 v1, T2 v2) throws RuntimeException {
+    public void update(T1 v1, T2 v2) throws AdtException {
         if (!dictionary.containsKey(v1)){
-            throw new RuntimeException("Element does not exist!");
+            throw new AdtException("Element does not exist!");
         }
         this.dictionary.replace(v1,v2);
     }
@@ -61,11 +62,11 @@ public class Dict<T1,T2> implements IDict<T1,T2> {
         return this.dictionary.values();
     }
     @Override
-    public void remove(T1 id) throws RuntimeException {
+    public void remove(T1 id) throws AdtException {
         if (dictionary.containsKey(id))
             this.dictionary.remove(id);
         else
-            throw new RuntimeException("Element does not exost!");
+            throw new AdtException("Element does not exost!");
     }
 
 }

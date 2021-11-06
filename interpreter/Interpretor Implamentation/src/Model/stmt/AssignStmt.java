@@ -1,5 +1,7 @@
 package Model.stmt;
 
+import Exceptions.AssignmentException;
+import Exceptions.InterpreterException;
 import Model.PrgState;
 import Model.adt.IDict;
 import Model.adt.IStack;
@@ -27,7 +29,7 @@ public class AssignStmt implements IStmt{
     }
 
     @Override
-    public PrgState execute(PrgState state) throws RuntimeException {
+    public PrgState execute(PrgState state) throws InterpreterException {
         IStack<IStmt> stack = state.getExeStack();
         IDict<String, IValue> stbl = state.getSymTable();
         if (stbl.isDefined(id)){
@@ -35,10 +37,10 @@ public class AssignStmt implements IStmt{
             if (val.getType().equals(stbl.lookup(id).getType())){
                 stbl.update(id,val);
             } else {
-                throw new RuntimeException("Type of expression and type of variable do not match");
+                throw new AssignmentException("Type of expression and type of variable do not match");
             }
         } else {
-            throw new RuntimeException("Variable is not declared");
+            throw new AssignmentException("Variable is not declared");
         }
         state.setExeStack(stack);
         state.setSymTable(stbl);
@@ -47,13 +49,13 @@ public class AssignStmt implements IStmt{
     }
 
     @Override
-    public IDict<String, IType> typecheck(IDict<String, IType> symTable) throws RuntimeException {
+    public IDict<String, IType> typecheck(IDict<String, IType> symTable) throws InterpreterException {
         IType vart = symTable.lookup(id);
         IType expt = expression.typecheck(symTable);
         if (vart.equals(expt)) {
             return symTable;
         } else {
-            throw new RuntimeException("Not the same type on assignment");
+            throw new AssignmentException("Not the same type on assignment");
         }
     }
 

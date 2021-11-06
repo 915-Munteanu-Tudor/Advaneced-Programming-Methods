@@ -1,4 +1,5 @@
 package Repo;
+import Exceptions.InterpreterException;
 import Model.PrgState;
 
 import  java.io.*;
@@ -8,9 +9,16 @@ import java.util.List;
 public class Repo implements IRepo {
 
     List<PrgState> myPrgStates;
+    String logFilePath;
 
-    public Repo() {
+    public Repo(String lg) throws InterpreterException {
+        try {
+            PrintWriter emptyFile = new PrintWriter(new BufferedWriter(new FileWriter(lg)));
+        } catch (IOException exception) {
+            throw new InterpreterException("Log file could not be opened");
+        }
         myPrgStates = new LinkedList<>();
+        logFilePath = lg;
     }
 
     @Override
@@ -33,5 +41,22 @@ public class Repo implements IRepo {
     @Override
     public void addPrg(PrgState newPrg) {
         myPrgStates.add(newPrg);
+    }
+
+    @Override
+    public void logPrgStateExec(PrgState newPrg) throws InterpreterException {
+        PrintWriter logFile;
+        try {
+            logFile = new PrintWriter(new BufferedWriter(new FileWriter(logFilePath, true)));
+        } catch (IOException exception) {
+            throw new InterpreterException(exception.getMessage());
+        }
+        logFile.println(newPrg.toString());
+        logFile.flush();
+        if (newPrg.getExeStack().isEmpty()) {
+            logFile.close();
+            //myPrgStates.remove(0);
+        }
+
     }
 }

@@ -1,4 +1,5 @@
 package Model.exp;
+import Exceptions.InterpreterException;
 import Model.adt.IDict;
 import Model.types.IType;
 import Model.types.IntType;
@@ -24,7 +25,7 @@ public class ArithExp extends Exp{
   }
 
     @Override
-    public IType typecheck(IDict<String, IType> symTable) throws RuntimeException {
+    public IType typecheck(IDict<String, IType> symTable) throws InterpreterException {
          IType type1, type2;
          type1 = e1.typecheck(symTable);
          type2 = e2.typecheck(symTable);
@@ -33,15 +34,15 @@ public class ArithExp extends Exp{
                  return new IntType();
              }
              else{
-                 throw new RuntimeException("Second operand is not an integer");
+                 throw new InterpreterException("Second operand is not an integer");
              }
          } else {
-             throw new RuntimeException("First operand is not an integer");
+             throw new InterpreterException("First operand is not an integer");
          }
     }
 
     @Override
-    public IValue eval(IDict<String, IValue> symTable) throws RuntimeException {
+    public IValue eval(IDict<String, IValue> symTable) throws InterpreterException {
         IValue val1, val2;
         val1 = e1.eval(symTable);
         if (val1.getType().equals(new IntType())) {
@@ -63,13 +64,13 @@ public class ArithExp extends Exp{
                         if (number2 == 0) throw new RuntimeException("Can't divide by 0");
                         return new IntValue(number1 / number2);
                     default:
-                        throw new RuntimeException("Invalid operation!");
+                        throw new InterpreterException("Invalid operation!");
                 }
             } else {
-                throw new RuntimeException("Second operand is not an integer");
+                throw new InterpreterException("Second operand is not an integer");
             }
         } else {
-            throw new RuntimeException("First operand is not an integer");
+            throw new InterpreterException("First operand is not an integer");
         }
     }
 

@@ -1,24 +1,31 @@
 package Model;
+import Exceptions.InterpreterException;
 import Model.adt.*;
 import Model.stmt.IStmt;
 import Model.value.IValue;
+import Model.value.StringValue;
+
+import java.io.BufferedReader;
 
 public class PrgState {
 
     IStack<IStmt> exeStack;
     IDict<String, IValue> symTable;
     IList<IValue> out;
+    IDict<StringValue, BufferedReader> fileTbl;
     IStmt originalProgram; //optional field, but good to have
 
-    public PrgState(IStack<IStmt>stk, IDict<String, IValue> symtbl, IList<IValue> ot, IStmt stmt){
+    public PrgState(IStack<IStmt>stk, IDict<String, IValue> symtbl, IList<IValue> ot, IDict<StringValue, BufferedReader> fileTable, IStmt stmt){
         exeStack = stk;
         symTable = symtbl;
         out = ot;
-        originalProgram = stmt.createCopy();
+        fileTbl = fileTable;
+        originalProgram =stmt.createCopy();
         stk.push(stmt);
     }
 
-    public void typeCheck() throws RuntimeException{
+
+    public void typeCheck() throws InterpreterException {
         originalProgram.typecheck(new Dict<>());
     }
 
@@ -26,13 +33,13 @@ public class PrgState {
         return !exeStack.isEmpty();
     }
 
-    public PrgState oneStep() throws RuntimeException {
-        if (exeStack.isEmpty()) {
-            throw new RuntimeException("Stack is empty");
-        }
-        IStmt currentStatement = exeStack.pop();
-        return currentStatement.execute(this);
-    }
+//    public PrgState oneStep() throws InterpreterException {
+//        if (exeStack.isEmpty()) {
+//            throw new InterpreterException("Stack is empty");
+//        }
+//        IStmt currentStatement = exeStack.pop();
+//        return currentStatement.execute(this);
+//    }
 
     @Override
     public String toString() {
@@ -79,4 +86,11 @@ public class PrgState {
     }
 
 
+    public IDict<StringValue, BufferedReader> getFileTbl() {
+        return fileTbl;
+    }
+
+    public void setFileTbl(IDict<StringValue, BufferedReader> fileTbl) {
+        this.fileTbl = fileTbl;
+    }
 }

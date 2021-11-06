@@ -1,5 +1,7 @@
 package Model.stmt;
 
+import Exceptions.AssignmentException;
+import Exceptions.InterpreterException;
 import Model.PrgState;
 import Model.adt.IDict;
 import Model.types.IType;
@@ -13,7 +15,7 @@ public class NopStmt implements IStmt {
     }
 
     @Override
-    public IDict<String, IType> typecheck(IDict<String, IType> symtable) throws RuntimeException {
+    public IDict<String, IType> typecheck(IDict<String, IType> symtable) throws AssignmentException {
         return symtable;
     }
 

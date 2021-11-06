@@ -1,5 +1,7 @@
 package Model.adt;
 
+import Exceptions.AdtException;
+
 import java.util.ListIterator;
 
 public class Stack<T> implements IStack<T> {
@@ -8,9 +10,9 @@ public class Stack<T> implements IStack<T> {
     public Stack(){this.stack = new java.util.Stack<>();}
 
     @Override
-    public T pop() throws RuntimeException{
+    public T pop() throws AdtException {
         if (stack.isEmpty()){
-            throw new RuntimeException("Stack is empty");
+            throw new AdtException("Stack is empty");
         }
         return stack.pop();
     }

@@ -1,5 +1,8 @@
 package Model.stmt;
 
+import Exceptions.AdtException;
+import Exceptions.AssignmentException;
+import Exceptions.InterpreterException;
 import Model.PrgState;
 import Model.adt.Dict;
 import Model.adt.IDict;
@@ -29,11 +32,11 @@ public class IfStmt implements IStmt {
     }
 
     @Override
-    public PrgState execute(PrgState state) throws RuntimeException {
+    public PrgState execute(PrgState state) throws InterpreterException {
         IStack<IStmt> stk = state.getExeStack();
         IValue cond = expression.eval(state.getSymTable());
         if (!cond.getType().equals(new BoolType())) {
-            throw  new RuntimeException("Condition is not a boolean type");
+            throw  new AssignmentException("Condition is not a boolean type");
         }
         if (cond.equals(new BoolValue(true))) {
             stk.push(thenStmt);
@@ -41,23 +44,22 @@ public class IfStmt implements IStmt {
             stk.push(elseStmt);
         }
         state.setExeStack(stk);
-        //return null;
         return state;
     }
 
     @Override
-    public IDict<String, IType> typecheck(IDict<String, IType> symtable) throws RuntimeException {
+    public IDict<String, IType> typecheck(IDict<String, IType> symtable) throws InterpreterException {
         IType expressionType = expression.typecheck(symtable);
         if (expressionType.equals(new BoolType())) {
             thenStmt.typecheck(clone(symtable));
             elseStmt.typecheck(clone(symtable));
             return symtable;
         } else {
-            throw new RuntimeException("Condition not of type bool");
+            throw new AssignmentException("Condition not of type bool");
         }
     }
 
-    private IDict<String, IType> clone(IDict<String, IType> symtable) {
+    private IDict<String, IType> clone(IDict<String, IType> symtable) throws InterpreterException {
         IDict<String,IType> newSymTbl = new Dict<>();
         for (Map.Entry<String, IType> entry:symtable.getContent().entrySet()) {
             newSymTbl.add(entry.getKey(), entry.getValue());

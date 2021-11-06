@@ -1,5 +1,7 @@
 package Model.exp;
 
+import Exceptions.InterpreterException;
+import Exceptions.TypeException;
 import Model.adt.IDict;
 import Model.types.BoolType;
 import Model.types.IType;
@@ -23,7 +25,7 @@ public class LogicExp extends Exp {
     }
 
     @Override
-    public IType typecheck(IDict<String, IType> symTable) throws RuntimeException {
+    public IType typecheck(IDict<String, IType> symTable) throws InterpreterException {
         IType type1, type2;
         type1 = e1.typecheck(symTable);
         type2 = e2.typecheck(symTable);
@@ -32,14 +34,14 @@ public class LogicExp extends Exp {
                 return new BoolType();
             }
             else{
-                throw new RuntimeException("Second operand is not a boolean");
+                throw new InterpreterException("Second operand is not a boolean");
             }
         } else {
-            throw new RuntimeException("First operand is not a boolean");
+            throw new InterpreterException("First operand is not a boolean");
         }
     }
 
-    public IValue eval(IDict<String, IValue> symTable) throws RuntimeException {
+    public IValue eval(IDict<String, IValue> symTable) throws InterpreterException {
         IValue val1, val2;
         val1 = e1.eval(symTable);
         if (val1.getType().equals(new BoolType())) {
@@ -55,13 +57,13 @@ public class LogicExp extends Exp {
                     case '|':
                         return new BoolValue(bool1 | bool2);
                     default:
-                        throw new RuntimeException("Invalid operation!");
+                        throw new InterpreterException("Invalid operation!");
                 }
             } else {
-                throw new RuntimeException("Second operand is not a boolean");
+                throw new TypeException("Second operand is not a boolean");
             }
         } else {
-            throw new RuntimeException("First operand is not a boolean");
+            throw new TypeException("First operand is not a boolean");
         }
 
     }

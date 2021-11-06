@@ -1,6 +1,8 @@
 package Model.stmt;
 
 
+import Exceptions.AssignmentException;
+import Exceptions.InterpreterException;
 import Model.PrgState;
 import Model.adt.IDict;
 import Model.adt.IList;
@@ -22,7 +24,7 @@ public class PrintStmt implements IStmt{
         return "print(" + expression.toString() + ")";
     }
 
-    public PrgState execute(PrgState state){
+    public PrgState execute(PrgState state) throws InterpreterException {
         IStack<IStmt> stk = state.getExeStack();
         IList<IValue> output = state.getOut();
         output.add(expression.eval(state.getSymTable()));
@@ -33,7 +35,7 @@ public class PrintStmt implements IStmt{
     }
 
     @Override
-    public IDict<String, IType> typecheck(IDict<String, IType> symtable) throws RuntimeException {
+    public IDict<String, IType> typecheck(IDict<String, IType> symtable) throws InterpreterException {
         expression.typecheck(symtable);
         return symtable;
     }

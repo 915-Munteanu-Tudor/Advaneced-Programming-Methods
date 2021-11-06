@@ -1,4 +1,5 @@
 package Model.exp;
+import Exceptions.InterpreterException;
 import Model.adt.IDict;
 import Model.types.IType;
 import Model.value.IValue;
@@ -12,7 +13,7 @@ public class ConstExp extends Exp{
     }
 
     @Override
-    public IType typecheck(IDict<String, IType> symTable) throws RuntimeException {
+    public IType typecheck(IDict<String, IType> symTable) throws InterpreterException {
         return number.getType();
     }
 

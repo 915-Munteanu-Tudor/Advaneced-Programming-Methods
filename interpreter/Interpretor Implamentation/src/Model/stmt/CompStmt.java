@@ -1,5 +1,7 @@
 package Model.stmt;
 
+import Exceptions.AssignmentException;
+import Exceptions.InterpreterException;
 import Model.PrgState;
 import Model.adt.IDict;
 import Model.adt.IStack;
@@ -15,7 +17,7 @@ public class CompStmt implements IStmt{
     }
 
     @Override
-    public PrgState execute(PrgState state) throws RuntimeException {
+    public PrgState execute(PrgState state) throws InterpreterException {
         IStack<IStmt> stk = state.getExeStack();
         stk.push(stmt2);
         stk.push(stmt1);
@@ -25,12 +27,12 @@ public class CompStmt implements IStmt{
     }
 
     @Override
-    public IDict<String, IType> typecheck(IDict<String, IType> symtable) throws RuntimeException {
+    public IDict<String, IType> typecheck(IDict<String, IType> symtable) throws InterpreterException {
         return stmt2.typecheck(stmt1.typecheck(symtable));
     }
 
     @Override
-    public String toString(){ return this.stmt1.toString() + '\n' + this.stmt2.toString(); }
+    public String toString(){ return this.stmt1.toString() + "; " + this.stmt2.toString() ; }
 
     @Override
     public IStmt createCopy() {

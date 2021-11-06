@@ -1,6 +1,9 @@
 package Model.stmt;
 
 
+import Exceptions.AdtException;
+import Exceptions.AssignmentException;
+import Exceptions.InterpreterException;
 import Model.PrgState;
 import Model.adt.IDict;
 import Model.adt.IStack;
@@ -18,11 +21,11 @@ public class VarDeclStmt implements IStmt{
 
 
     @Override
-    public PrgState execute(PrgState state) throws RuntimeException {
+    public PrgState execute(PrgState state) throws InterpreterException {
         IStack<IStmt> stk = state.getExeStack();;
         IDict<String, IValue> stbl = state.getSymTable();
         if (stbl.isDefined(name)) {
-            throw new RuntimeException("Variable already declared!");
+            throw new AssignmentException("Variable already declared!");
         } else {
             IValue def_val = type.defaultValue();
             stbl.add(name,def_val);
@@ -34,7 +37,7 @@ public class VarDeclStmt implements IStmt{
     }
 
     @Override
-    public IDict<String, IType> typecheck(IDict<String, IType> symtable) throws RuntimeException {
+    public IDict<String, IType> typecheck(IDict<String, IType> symtable) throws InterpreterException {
         symtable.add(name,type);
         return symtable;
     }
