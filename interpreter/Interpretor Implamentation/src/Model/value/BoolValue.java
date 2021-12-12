@@ -29,7 +29,7 @@ public class BoolValue implements IValue{
 
     @Override
     public String toString(){
-        return this.value ? "true" : "false";
+        return Boolean.toString(value);
     }
 
     @Override

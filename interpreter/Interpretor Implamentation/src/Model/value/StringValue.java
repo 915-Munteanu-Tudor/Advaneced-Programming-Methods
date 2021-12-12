@@ -12,6 +12,7 @@ public class StringValue implements IValue{
     }
 
     public StringValue(String s) {this.value = s;}
+
     public StringValue() {value = "";}
 
     @Override

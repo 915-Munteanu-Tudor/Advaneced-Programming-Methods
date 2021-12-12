@@ -36,13 +36,16 @@ public class List<T> implements IList<T> {
 
     @Override
     public String toString() {
-        for(var item:list)
-        {
-            return item.toString();
-
+        StringBuilder s = new StringBuilder();
+        for (T elem: list) {
+            if (elem != null) {
+                s.append(elem.toString());
+                s.append("\n");
+            }
         }
-        return " ";
+        return s.toString();
     }
+
     @Override
     public int get(T v) {
         return list.indexOf(v);

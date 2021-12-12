@@ -25,7 +25,7 @@ public class CloseRFile implements IStmt{
         IStack<IStmt> stack = state.getExeStack();
         IDict<String, IValue> stbl = state.getSymTable();
         IDict<StringValue, BufferedReader> fileTbl = state.getFileTbl();
-        IValue val = expression.eval(stbl);
+        IValue val = expression.eval(stbl, state.getHeapTable());
         if (val.getType().equals(new StringType())) {
             StringValue strVal = (StringValue) val;
             if (fileTbl.isDefined(strVal)) {

@@ -3,6 +3,7 @@ package Model.exp;
 import Exceptions.InterpreterException;
 import Exceptions.TypeException;
 import Model.adt.IDict;
+import Model.adt.IHeap;
 import Model.types.BoolType;
 import Model.types.IType;
 import Model.types.IntType;
@@ -41,11 +42,11 @@ public class LogicExp extends Exp {
         }
     }
 
-    public IValue eval(IDict<String, IValue> symTable) throws InterpreterException {
+    public IValue eval(IDict<String, IValue> symTable, IHeap<IValue> heapTable) throws InterpreterException {
         IValue val1, val2;
-        val1 = e1.eval(symTable);
+        val1 = e1.eval(symTable, heapTable);
         if (val1.getType().equals(new BoolType())) {
-            val2 = e2.eval(symTable);
+            val2 = e2.eval(symTable, heapTable);
             if (val2.getType().equals(new BoolType())) {
                 BoolValue bv1 = (BoolValue) val1;
                 BoolValue bv2 = (BoolValue) val2;

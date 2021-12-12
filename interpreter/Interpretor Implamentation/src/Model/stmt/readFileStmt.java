@@ -7,6 +7,7 @@ import Model.adt.IDict;
 import Model.adt.IStack;
 import Model.exp.Exp;
 import Model.types.IType;
+import Model.types.IntType;
 import Model.types.StringType;
 import Model.value.IValue;
 import Model.value.IntValue;
@@ -31,8 +32,8 @@ public class readFileStmt implements IStmt{
         IDict<StringValue, BufferedReader> fileTbl = state.getFileTbl();
         if (stbl.isDefined(varName)) {
             IValue val = stbl.lookup(varName);
-            if (val.getType().equals(new StringType())) {
-                IValue val1 = expression.eval(stbl);
+            if (val.getType().equals(new IntType())) {
+                IValue val1 = expression.eval(stbl, state.getHeapTable());
                 if (val1.getType().equals(new StringType())) {
                     StringValue strVal = (StringValue) val1;
                     BufferedReader rd = fileTbl.lookup(strVal);

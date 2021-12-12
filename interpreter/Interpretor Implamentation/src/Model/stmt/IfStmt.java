@@ -34,7 +34,7 @@ public class IfStmt implements IStmt {
     @Override
     public PrgState execute(PrgState state) throws InterpreterException {
         IStack<IStmt> stk = state.getExeStack();
-        IValue cond = expression.eval(state.getSymTable());
+        IValue cond = expression.eval(state.getSymTable(), state.getHeapTable());
         if (!cond.getType().equals(new BoolType())) {
             throw  new AssignmentException("Condition is not a boolean type");
         }

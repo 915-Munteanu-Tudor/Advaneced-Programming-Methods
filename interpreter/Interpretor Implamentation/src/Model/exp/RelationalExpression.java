@@ -2,6 +2,7 @@ package Model.exp;
 
 import Exceptions.InterpreterException;
 import Model.adt.IDict;
+import Model.adt.IHeap;
 import Model.types.IType;
 import Model.types.IntType;
 import Model.value.BoolValue;
@@ -12,6 +13,19 @@ public class RelationalExpression extends Exp{
     String operation;
     Exp expression1;
     Exp expression2;
+
+    public String getOperation() {
+        return operation;
+    }
+
+    public void setOperation(String operation) {
+        this.operation = operation;
+    }
+
+    public Exp getExpression1() {
+        return expression1;
+    }
+
 
     public RelationalExpression(String operation, Exp expression1, Exp expression2) {
         this.operation = operation;
@@ -25,10 +39,10 @@ public class RelationalExpression extends Exp{
     }
 
     @Override
-    public IValue eval(IDict<String, IValue> symTable) throws InterpreterException {
-        IValue val1 = expression1.eval(symTable);
+    public IValue eval(IDict<String, IValue> symTable, IHeap<IValue> heapTable) throws InterpreterException {
+        IValue val1 = expression1.eval(symTable, heapTable);
         if (val1.getType().equals(new IntType())) {
-            IValue val2 = expression2.eval(symTable);
+            IValue val2 = expression2.eval(symTable, heapTable);
             if (val2.getType().equals(new IntType())) {
                 IntValue intval1 = (IntValue)val1;
                 IntValue intval2 = (IntValue)val2;

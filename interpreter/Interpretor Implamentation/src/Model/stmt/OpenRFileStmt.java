@@ -26,7 +26,7 @@ public class OpenRFileStmt implements IStmt{
         IStack<IStmt> stack = state.getExeStack();
         IDict<String, IValue> stbl = state.getSymTable();
         IDict<StringValue, BufferedReader> filetbl = state.getFileTbl();
-        IValue val = expression.eval(stbl);
+        IValue val = expression.eval(stbl, state.getHeapTable());
         if (val.getType().equals(new StringType())) {
             StringValue strVal = (StringValue) val;
             if (filetbl.isDefined(strVal)) {
@@ -34,6 +34,7 @@ public class OpenRFileStmt implements IStmt{
             } else {
                 try {
                     BufferedReader br = new BufferedReader(new FileReader(strVal.getValue()));
+                    filetbl.add(strVal, br);
                 } catch (IOException exception) {
                     throw new InterpreterException("File cannot be opened " + exception.getMessage());
                 }

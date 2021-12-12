@@ -1,6 +1,7 @@
 package Model.exp;
 import Exceptions.InterpreterException;
 import Model.adt.IDict;
+import Model.adt.IHeap;
 import Model.types.IType;
 import Model.types.IntType;
 import Model.value.IValue;
@@ -42,11 +43,11 @@ public class ArithExp extends Exp{
     }
 
     @Override
-    public IValue eval(IDict<String, IValue> symTable) throws InterpreterException {
+    public IValue eval(IDict<String, IValue> symTable, IHeap<IValue> heapTbl) throws InterpreterException {
         IValue val1, val2;
-        val1 = e1.eval(symTable);
+        val1 = e1.eval(symTable, heapTbl);
         if (val1.getType().equals(new IntType())) {
-            val2 = e2.eval(symTable);
+            val2 = e2.eval(symTable, heapTbl);
             if (val2.getType().equals(new IntType())) {
                 IntValue intv1 = (IntValue) val1;
                 IntValue intv2 = (IntValue) val2;

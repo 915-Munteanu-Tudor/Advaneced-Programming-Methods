@@ -12,12 +12,14 @@ public class PrgState {
     IStack<IStmt> exeStack;
     IDict<String, IValue> symTable;
     IList<IValue> out;
+    IHeap<IValue> heapTable;
     IDict<StringValue, BufferedReader> fileTbl;
     IStmt originalProgram; //optional field, but good to have
 
-    public PrgState(IStack<IStmt>stk, IDict<String, IValue> symtbl, IList<IValue> ot, IDict<StringValue, BufferedReader> fileTable, IStmt stmt){
+    public PrgState(IStack<IStmt>stk, IDict<String, IValue> symtbl, IList<IValue> ot, IDict<StringValue, BufferedReader> fileTable, IHeap<IValue> ht, IStmt stmt){
         exeStack = stk;
         symTable = symtbl;
+        heapTable = ht;
         out = ot;
         fileTbl = fileTable;
         originalProgram =stmt.createCopy();
@@ -48,6 +50,10 @@ public class PrgState {
                 exeStack.toString() + '\n' +
                 " -------- Symbol  Table -------- \n" +
                 symTable.toString() + '\n' +
+                " -------- File  Table -------- \n" +
+                fileTbl.toString() + '\n' +
+                " --------  Heap  Table  -------- \n" +
+                heapTable.toString() + '\n' +
                 " -------- Output Console -------- \n" +
                 out.toString() + "\n" +
                 " ------------------------------- \n\n\n";
@@ -85,12 +91,19 @@ public class PrgState {
         this.originalProgram = originalProgram;
     }
 
-
     public IDict<StringValue, BufferedReader> getFileTbl() {
         return fileTbl;
     }
 
     public void setFileTbl(IDict<StringValue, BufferedReader> fileTbl) {
         this.fileTbl = fileTbl;
+    }
+
+    public IHeap<IValue> getHeapTable() {
+        return heapTable;
+    }
+
+    public void setHeapTable(IHeap<IValue> heapTable) {
+        this.heapTable = heapTable;
     }
 }

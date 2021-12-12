@@ -33,7 +33,7 @@ public class AssignStmt implements IStmt{
         IStack<IStmt> stack = state.getExeStack();
         IDict<String, IValue> stbl = state.getSymTable();
         if (stbl.isDefined(id)){
-            IValue val = expression.eval(stbl);
+            IValue val = expression.eval(stbl, state.getHeapTable());
             if (val.getType().equals(stbl.lookup(id).getType())){
                 stbl.update(id,val);
             } else {
