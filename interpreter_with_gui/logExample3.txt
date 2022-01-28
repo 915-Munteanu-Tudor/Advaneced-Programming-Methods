@@ -1,0 +1,400 @@
+ProgramID: --------- 1 ---------
+ --------Execution Stack-------- 
+bool a; int v; a=true; ( IF (a) THEN (v=2) ELSE (v=3)); print(v)
+no operation
+
+
+ -------- Symbol  Table -------- 
+
+ -------- File  Table -------- 
+
+ --------  Heap  Table  -------- 
+
+ -------- Output Console -------- 
+
+ ------------------------------- 
+
+
+
+ProgramID: --------- 1 ---------
+ --------Execution Stack-------- 
+bool a
+int v; a=true; ( IF (a) THEN (v=2) ELSE (v=3)); print(v)
+no operation
+
+
+ -------- Symbol  Table -------- 
+
+ -------- File  Table -------- 
+
+ --------  Heap  Table  -------- 
+
+ -------- Output Console -------- 
+
+ ------------------------------- 
+
+
+
+ProgramID: --------- 1 ---------
+ --------Execution Stack-------- 
+bool a
+int v; a=true; ( IF (a) THEN (v=2) ELSE (v=3)); print(v)
+no operation
+
+
+ -------- Symbol  Table -------- 
+
+ -------- File  Table -------- 
+
+ --------  Heap  Table  -------- 
+
+ -------- Output Console -------- 
+
+ ------------------------------- 
+
+
+
+ProgramID: --------- 1 ---------
+ --------Execution Stack-------- 
+int v; a=true; ( IF (a) THEN (v=2) ELSE (v=3)); print(v)
+no operation
+
+
+ -------- Symbol  Table -------- 
+a -> false
+
+ -------- File  Table -------- 
+
+ --------  Heap  Table  -------- 
+
+ -------- Output Console -------- 
+
+ ------------------------------- 
+
+
+
+ProgramID: --------- 1 ---------
+ --------Execution Stack-------- 
+int v; a=true; ( IF (a) THEN (v=2) ELSE (v=3)); print(v)
+no operation
+
+
+ -------- Symbol  Table -------- 
+a -> false
+
+ -------- File  Table -------- 
+
+ --------  Heap  Table  -------- 
+
+ -------- Output Console -------- 
+
+ ------------------------------- 
+
+
+
+ProgramID: --------- 1 ---------
+ --------Execution Stack-------- 
+int v
+a=true; ( IF (a) THEN (v=2) ELSE (v=3)); print(v)
+no operation
+
+
+ -------- Symbol  Table -------- 
+a -> false
+
+ -------- File  Table -------- 
+
+ --------  Heap  Table  -------- 
+
+ -------- Output Console -------- 
+
+ ------------------------------- 
+
+
+
+ProgramID: --------- 1 ---------
+ --------Execution Stack-------- 
+int v
+a=true; ( IF (a) THEN (v=2) ELSE (v=3)); print(v)
+no operation
+
+
+ -------- Symbol  Table -------- 
+a -> false
+
+ -------- File  Table -------- 
+
+ --------  Heap  Table  -------- 
+
+ -------- Output Console -------- 
+
+ ------------------------------- 
+
+
+
+ProgramID: --------- 1 ---------
+ --------Execution Stack-------- 
+a=true; ( IF (a) THEN (v=2) ELSE (v=3)); print(v)
+no operation
+
+
+ -------- Symbol  Table -------- 
+a -> false
+v -> 0
+
+ -------- File  Table -------- 
+
+ --------  Heap  Table  -------- 
+
+ -------- Output Console -------- 
+
+ ------------------------------- 
+
+
+
+ProgramID: --------- 1 ---------
+ --------Execution Stack-------- 
+a=true; ( IF (a) THEN (v=2) ELSE (v=3)); print(v)
+no operation
+
+
+ -------- Symbol  Table -------- 
+a -> false
+v -> 0
+
+ -------- File  Table -------- 
+
+ --------  Heap  Table  -------- 
+
+ -------- Output Console -------- 
+
+ ------------------------------- 
+
+
+
+ProgramID: --------- 1 ---------
+ --------Execution Stack-------- 
+a=true
+( IF (a) THEN (v=2) ELSE (v=3)); print(v)
+no operation
+
+
+ -------- Symbol  Table -------- 
+a -> false
+v -> 0
+
+ -------- File  Table -------- 
+
+ --------  Heap  Table  -------- 
+
+ -------- Output Console -------- 
+
+ ------------------------------- 
+
+
+
+ProgramID: --------- 1 ---------
+ --------Execution Stack-------- 
+a=true
+( IF (a) THEN (v=2) ELSE (v=3)); print(v)
+no operation
+
+
+ -------- Symbol  Table -------- 
+a -> false
+v -> 0
+
+ -------- File  Table -------- 
+
+ --------  Heap  Table  -------- 
+
+ -------- Output Console -------- 
+
+ ------------------------------- 
+
+
+
+ProgramID: --------- 1 ---------
+ --------Execution Stack-------- 
+( IF (a) THEN (v=2) ELSE (v=3)); print(v)
+no operation
+
+
+ -------- Symbol  Table -------- 
+a -> true
+v -> 0
+
+ -------- File  Table -------- 
+
+ --------  Heap  Table  -------- 
+
+ -------- Output Console -------- 
+
+ ------------------------------- 
+
+
+
+ProgramID: --------- 1 ---------
+ --------Execution Stack-------- 
+( IF (a) THEN (v=2) ELSE (v=3)); print(v)
+no operation
+
+
+ -------- Symbol  Table -------- 
+a -> true
+v -> 0
+
+ -------- File  Table -------- 
+
+ --------  Heap  Table  -------- 
+
+ -------- Output Console -------- 
+
+ ------------------------------- 
+
+
+
+ProgramID: --------- 1 ---------
+ --------Execution Stack-------- 
+( IF (a) THEN (v=2) ELSE (v=3))
+print(v)
+no operation
+
+
+ -------- Symbol  Table -------- 
+a -> true
+v -> 0
+
+ -------- File  Table -------- 
+
+ --------  Heap  Table  -------- 
+
+ -------- Output Console -------- 
+
+ ------------------------------- 
+
+
+
+ProgramID: --------- 1 ---------
+ --------Execution Stack-------- 
+( IF (a) THEN (v=2) ELSE (v=3))
+print(v)
+no operation
+
+
+ -------- Symbol  Table -------- 
+a -> true
+v -> 0
+
+ -------- File  Table -------- 
+
+ --------  Heap  Table  -------- 
+
+ -------- Output Console -------- 
+
+ ------------------------------- 
+
+
+
+ProgramID: --------- 1 ---------
+ --------Execution Stack-------- 
+v=2
+print(v)
+no operation
+
+
+ -------- Symbol  Table -------- 
+a -> true
+v -> 0
+
+ -------- File  Table -------- 
+
+ --------  Heap  Table  -------- 
+
+ -------- Output Console -------- 
+
+ ------------------------------- 
+
+
+
+ProgramID: --------- 1 ---------
+ --------Execution Stack-------- 
+v=2
+print(v)
+no operation
+
+
+ -------- Symbol  Table -------- 
+a -> true
+v -> 0
+
+ -------- File  Table -------- 
+
+ --------  Heap  Table  -------- 
+
+ -------- Output Console -------- 
+
+ ------------------------------- 
+
+
+
+ProgramID: --------- 1 ---------
+ --------Execution Stack-------- 
+print(v)
+no operation
+
+
+ -------- Symbol  Table -------- 
+a -> true
+v -> 2
+
+ -------- File  Table -------- 
+
+ --------  Heap  Table  -------- 
+
+ -------- Output Console -------- 
+
+ ------------------------------- 
+
+
+
+ProgramID: --------- 1 ---------
+ --------Execution Stack-------- 
+print(v)
+no operation
+
+
+ -------- Symbol  Table -------- 
+a -> true
+v -> 2
+
+ -------- File  Table -------- 
+
+ --------  Heap  Table  -------- 
+
+ -------- Output Console -------- 
+
+ ------------------------------- 
+
+
+
+ProgramID: --------- 1 ---------
+ --------Execution Stack-------- 
+no operation
+
+
+ -------- Symbol  Table -------- 
+a -> true
+v -> 2
+
+ -------- File  Table -------- 
+
+ --------  Heap  Table  -------- 
+
+ -------- Output Console -------- 
+2
+
+ ------------------------------- 
+
+
+
