@@ -1,9 +1,6 @@
 package Controller;
 import Model.PrgState;
-import Model.adt.IDict;
-import Model.adt.IHeap;
-import Model.adt.IList;
-import Model.adt.IStack;
+import Model.adt.*;
 import Model.stmt.IStmt;
 import Model.value.IValue;
 import Model.value.RefValue;
@@ -204,8 +201,10 @@ public class Controller {
                 .collect(Collectors.toList());
         if (states.size() == 0) {
             return new Model.adt.Dict<>();
+        } else {
+                return states.get(0).getSymTable();
         }
-        return repo.getProgramList().get(0).getSymTable();
+
     }
 
     public IStack<IStmt> getExeStack(int process) {
@@ -214,8 +213,17 @@ public class Controller {
                 .collect(Collectors.toList());
         if (states.size() == 0) {
             return new Model.adt.Stack<>();
+        } else {
+                return states.get(0).getExeStack();
+
         }
-        return repo.getProgramList().get(0).getExeStack();
+    }
+
+    public ILatchTable<Integer> getLatchTable() {
+        if (repo.getProgramList().size() == 0) {
+            return new LatchTable<>();
+        }
+        return repo.getProgramList().get(0).getLatchTbl();
     }
 
     public void setFinalStateList(List<PrgState> prgStateList) {

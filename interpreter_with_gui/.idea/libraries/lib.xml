@@ -4,7 +4,17 @@
       <root url="file://T:/intellij/fx/openjfx-17.0.1_windows-x64_bin-sdk/javafx-sdk-17.0.1/lib" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="file://T:/intellij/fx/openjfx-17.0.1_windows-x64_bin-sdk/javafx-sdk-17.0.1/lib" />
+      <root url="file://T:/intellij/fx/openjfx-17.0.1_windows-x64_bin-sdk/javafx-sdk-17.0.1/lib" />
+      <root url="jar://T:/intellij/fx/openjfx-17.0.1_windows-x64_bin-sdk/javafx-sdk-17.0.1/src.zip!/javafx.base" />
+      <root url="jar://T:/intellij/fx/openjfx-17.0.1_windows-x64_bin-sdk/javafx-sdk-17.0.1/src.zip!/javafx.controls" />
+      <root url="jar://T:/intellij/fx/openjfx-17.0.1_windows-x64_bin-sdk/javafx-sdk-17.0.1/src.zip!/javafx.fxml" />
+      <root url="jar://T:/intellij/fx/openjfx-17.0.1_windows-x64_bin-sdk/javafx-sdk-17.0.1/src.zip!/javafx.graphics" />
+      <root url="jar://T:/intellij/fx/openjfx-17.0.1_windows-x64_bin-sdk/javafx-sdk-17.0.1/src.zip!/javafx.media" />
+      <root url="jar://T:/intellij/fx/openjfx-17.0.1_windows-x64_bin-sdk/javafx-sdk-17.0.1/src.zip!/javafx.swing" />
+      <root url="jar://T:/intellij/fx/openjfx-17.0.1_windows-x64_bin-sdk/javafx-sdk-17.0.1/src.zip!/javafx.web" />
+    </SOURCES>
     <jarDirectory url="file://T:/intellij/fx/openjfx-17.0.1_windows-x64_bin-sdk/javafx-sdk-17.0.1/lib" recursive="false" />
   </library>
 </component>

@@ -26,7 +26,7 @@ public class ForkStmt implements IStmt{
         IStack<IStmt> stk = new Stack<>();
         stk.push(new NopStmt());
         stk.push(statement);
-        PrgState newPRogram = new PrgState(stk, newStbl, state.getOut(), state.getFileTbl(), state.getHeapTable());
+        PrgState newPRogram = new PrgState(stk, newStbl, state.getOut(), state.getFileTbl(), state.getHeapTable(), state.getLatchTbl());
         newPRogram.setId();
         return newPRogram;
     }

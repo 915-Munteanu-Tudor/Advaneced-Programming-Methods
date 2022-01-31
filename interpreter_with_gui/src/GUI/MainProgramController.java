@@ -53,13 +53,19 @@ public class MainProgramController {
     @FXML
     private TableView<Pair<Integer, IValue>> heapTblView;
     @FXML
+    private TableView<Pair<Integer, Integer>> latchTableView;
+    @FXML
+    private TableColumn<Pair<Integer, Integer>, Integer> latchAddrTblCol;
+    @FXML
+    private TableColumn<Pair<Integer, Integer>, Integer> latchIdentifTblCol;
+    @FXML
     private TextField nrOfStatesTextFields;
 
     public void setPrgStates(IStmt stmt, int index) throws InterpreterException {
         String file = "LogExample" + index + ".txt";
         IStack<IStmt> stack = new Stack<>();
         stack.push(new NopStmt());
-        PrgState state = new PrgState(stack, new Dict<>(), new List<>(), new Dict<>(), new Heap<>(), stmt);
+        PrgState state = new PrgState(stack, new Dict<>(), new List<>(), new Dict<>(), new Heap<>(), stmt, new LatchTable<>());
         IRepo repo = new Repo(file);
         repo.addPrg(state);
         controller = new Controller(repo);
@@ -97,7 +103,9 @@ public class MainProgramController {
 
     private void populateExecutionList() {
         exeStackTextField.setText("Execution Stack for " + currentState);
-        java.util.List<String> list = controller.getExeStack(currentState).getContent()
+        java.util.List<String> list = controller
+                .getExeStack(currentState)
+                .getContent()
                 .stream()
                 .map(Objects::toString)
                 .collect(Collectors.toList());
@@ -117,7 +125,8 @@ public class MainProgramController {
     public void populateProgramList() {
         java.util.List<String> list = new LinkedList<>();
         controller.getStateList().forEach((el) -> list.add(el.getId().toString()));
-        fileTblListView.setItems(FXCollections.observableList(list));
+        //System.out.println(list);
+        prgStatesListView.setItems(FXCollections.observableList(list));
     }
 
     public void populateFileList() {
@@ -131,6 +140,12 @@ public class MainProgramController {
                 .map(Object::toString)
                 .collect(Collectors.toList());
         outputConsoleListView.setItems(FXCollections.observableList(list));
+    }
+
+    private void populateLatchTable() {
+        java.util.List<Pair<Integer, Integer>> list = new LinkedList<>();
+        controller.getLatchTable().getContent().forEach((key, value) -> list.add(new Pair<>(key, value)));
+        latchTableView.setItems(FXCollections.observableList(list));
     }
 
     private void setNrOfStates() {
@@ -151,6 +166,7 @@ public class MainProgramController {
         populateProgramList();
         populateSymbolTable();
         populateExecutionList();
+        populateLatchTable();
         setNrOfStates();
     }
 
@@ -164,6 +180,9 @@ public class MainProgramController {
     private void initialize() {
         heapTblView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         symTblView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        latchTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        latchAddrTblCol.setCellValueFactory(new PairKeyFactory<>());
+        latchIdentifTblCol.setCellValueFactory(new PairValueFactory<>());
         addressTblCol.setCellValueFactory(new PairKeyFactory<>());
         valTblCol.setCellValueFactory(new PairValueFactory<>());
         varNameTblCol.setCellValueFactory(new PairKeyFactory<>());

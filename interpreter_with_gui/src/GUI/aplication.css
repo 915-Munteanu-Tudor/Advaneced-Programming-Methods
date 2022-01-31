@@ -1,0 +1,32 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+.root {
+    -fx-font-family: "Comic Sans MS";
+    -fx-base: #EEE8AA;
+    -fx-accent: #D3D3D3;
+    -fx-default-button: #F5FFFA;
+    -fx-focus-color: #FFF0F5;
+    -fx-faint-focus-color: #F0FFF0;
+    -fx-focused-text-base-color: ladder(
+            -fx-selection-bar,
+            -fx-light-text-color 45%,
+            -fx-dark-text-color 46%,
+            -fx-dark-text-color 59%,
+            -fx-mid-text-color 60%
+    );
+    -fx-focused-mark-color: -fx-focused-text-base-color;
+}
+
+.text-input:focused {
+    -fx-highlight-text-fill: ladder(
+            -fx-highlight-fill,
+            -fx-light-text-color 45%,
+            -fx-dark-text-color 65%,
+            -fx-dark-text-color 59%,
+            -fx-mid-text-color 60%
+    );
+}
+
+/*.button:hover {*/
+/*    -fx-background-color: linear-gradient(#2A5058, #61a2b1);*/
+/*}*/

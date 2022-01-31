@@ -62,6 +62,8 @@ public class ChooseProgramController {
         mainProgramController.setPrgStates(stmt, prgNr);
         Rectangle2D screenBounds = Screen.getPrimary().getBounds();
         Scene secondScene = new Scene(secondaryLayout, screenBounds.getWidth() * 2 / 3, screenBounds.getHeight() - 50);
+        secondScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("aplication.css")).toExternalForm());
+
 
         Stage newWindow = new Stage();
         newWindow.setTitle("Program " + prgNr);

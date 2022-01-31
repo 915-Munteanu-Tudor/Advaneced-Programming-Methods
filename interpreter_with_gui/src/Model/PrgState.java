@@ -14,6 +14,7 @@ public class PrgState {
     IList<IValue> out;
     IHeap<IValue> heapTable;
     IDict<StringValue, BufferedReader> fileTbl;
+    ILatchTable<Integer> latchTbl;
     IStmt originalProgram; //optional field, but good to have
     private static Integer lastID = 1;
 
@@ -27,24 +28,26 @@ public class PrgState {
         id = lastID;
     }
 
-    public PrgState(IStack<IStmt>stk, IDict<String, IValue> symtbl, IList<IValue> ot, IDict<StringValue, BufferedReader> fileTable, IHeap<IValue> ht, IStmt stmt){
+    public PrgState(IStack<IStmt>stk, IDict<String, IValue> symtbl, IList<IValue> ot, IDict<StringValue, BufferedReader> fileTable, IHeap<IValue> ht, IStmt stmt, ILatchTable<Integer> latchTable){
         exeStack = stk;
         symTable = symtbl;
         heapTable = ht;
         out = ot;
         fileTbl = fileTable;
         originalProgram =stmt.createCopy();
+        latchTbl = latchTable;
         id=1;
         if (originalProgram != null)
             stk.push(stmt);
     }
 
-    public PrgState(IStack<IStmt>stk, IDict<String, IValue> symtbl, IList<IValue> ot, IDict<StringValue, BufferedReader> fileTable, IHeap<IValue> ht){
+    public PrgState(IStack<IStmt>stk, IDict<String, IValue> symtbl, IList<IValue> ot, IDict<StringValue, BufferedReader> fileTable, IHeap<IValue> ht, ILatchTable<Integer> latchTable){
         exeStack = stk;
         symTable = symtbl;
         heapTable = ht;
         out = ot;
         fileTbl = fileTable;
+        latchTbl = latchTable;
         //id = 1;
     }
 
@@ -77,6 +80,8 @@ public class PrgState {
                 fileTbl.toString() + '\n' +
                 " --------  Heap  Table  -------- \n" +
                 heapTable.toString() + '\n' +
+                " --------  Latch  Table  -------- \n" +
+                latchTbl.toString() + '\n' +
                 " -------- Output Console -------- \n" +
                 out.toString() + "\n" +
                 " ------------------------------- \n\n\n";
@@ -128,5 +133,13 @@ public class PrgState {
 
     public void setHeapTable(IHeap<IValue> heapTable) {
         this.heapTable = heapTable;
+    }
+
+    public ILatchTable<Integer> getLatchTbl() {
+        return latchTbl;
+    }
+
+    public void setLatchTbl(ILatchTable<Integer> latchTbl) {
+        this.latchTbl = latchTbl;
     }
 }

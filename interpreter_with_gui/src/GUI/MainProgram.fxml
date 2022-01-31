@@ -10,63 +10,75 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="811.0" prefWidth="893.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MainProgramController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="934.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MainProgramController">
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="50.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="140.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="140.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="25.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="140.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="199.0" minWidth="10.0" prefWidth="125.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="63.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="63.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="63.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="63.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="63.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="67.0" minWidth="10.0" prefWidth="60.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="140.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="128.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="128.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="128.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="128.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="128.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="128.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="128.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="128.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="128.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="140.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="140.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="25.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="140.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="140.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="50.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
-      <RowConstraints maxHeight="213.0" minHeight="10.0" prefHeight="69.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="215.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="199.0" minHeight="0.0" prefHeight="38.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="381.0" minHeight="0.0" prefHeight="73.0" vgrow="SOMETIMES" />
     <RowConstraints maxHeight="361.0" minHeight="10.0" prefHeight="222.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="343.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="505.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="500.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="500.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="547.0" minHeight="10.0" prefHeight="282.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="361.0" minHeight="10.0" prefHeight="79.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="215.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <TextField fx:id="nrOfStatesTextFields" prefHeight="40.0" prefWidth="318.0" text="There are currently no program states" GridPane.columnIndex="4" GridPane.columnSpan="8">
+      <TextField fx:id="nrOfStatesTextFields" prefHeight="40.0" prefWidth="318.0" text="There are currently no program states" GridPane.columnIndex="7" GridPane.columnSpan="7">
          <font>
             <Font name="System Bold Italic" size="15.0" />
          </font>
       </TextField>
-      <TextField text="Heap Table" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1" />
-      <TextField fx:id="symTblTextField" text="Symbol Table" GridPane.columnIndex="12" GridPane.columnSpan="3" GridPane.rowIndex="1" />
-      <TextField text="File Table" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-      <TextField text="Output Console" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-      <TextField fx:id="exeStackTextField" text="Execution Stack" GridPane.columnIndex="12" GridPane.rowIndex="5" />
-      <TextField text="Program States" GridPane.columnIndex="14" GridPane.rowIndex="5" />
-      <ListView fx:id="fileTblListView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-      <ListView fx:id="outputConsoleListView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-      <ListView fx:id="exeStackListView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="12" GridPane.rowIndex="6" />
-      <ListView fx:id="prgStatesListView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="14" GridPane.rowIndex="6" />
-      <TableView fx:id="heapTblView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="2" GridPane.rowSpan="2">
+      <TextField text="Heap Table" GridPane.columnIndex="1" GridPane.columnSpan="5" GridPane.rowIndex="1" />
+      <TextField fx:id="symTblTextField" text="Symbol Table" GridPane.columnIndex="15" GridPane.columnSpan="5" GridPane.rowIndex="1" />
+      <TextField text="File Table" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+      <TextField text="Output Console" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+      <TextField fx:id="exeStackTextField" text="Execution Stack" GridPane.columnIndex="15" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+      <TextField text="Program States" GridPane.columnIndex="18" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+      <ListView fx:id="fileTblListView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+      <ListView fx:id="outputConsoleListView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+      <ListView fx:id="exeStackListView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="15" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+      <ListView fx:id="prgStatesListView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="18" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+      <TableView fx:id="heapTblView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="5" GridPane.rowIndex="2" GridPane.rowSpan="2">
         <columns>
           <TableColumn fx:id="addressTblCol" prefWidth="75.0" text="Address" />
           <TableColumn fx:id="valTblCol" prefWidth="75.0" text="Value" />
         </columns>
       </TableView>
-      <TableView fx:id="symTblView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="12" GridPane.columnSpan="3" GridPane.rowIndex="2" GridPane.rowSpan="2">
+      <TableView fx:id="symTblView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="15" GridPane.columnSpan="5" GridPane.rowIndex="2" GridPane.rowSpan="2">
         <columns>
           <TableColumn fx:id="varNameTblCol" prefWidth="75.0" text="Address" />
           <TableColumn fx:id="varValTblCol" prefWidth="75.0" text="Value" />
         </columns>
       </TableView>
-      <Button mnemonicParsing="false" onAction="#runOneStep" prefHeight="25.0" prefWidth="127.0" text="Run one step" GridPane.columnIndex="6" GridPane.columnSpan="4" GridPane.rowIndex="7" />
+      <Button mnemonicParsing="false" onAction="#runOneStep" prefHeight="25.0" prefWidth="165.0" text="Run One Step" GridPane.columnIndex="9" GridPane.columnSpan="3" GridPane.rowIndex="7" />
+      <TableView fx:id="latchTableView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="8" GridPane.columnSpan="5" GridPane.rowIndex="2" GridPane.rowSpan="2">
+        <columns>
+          <TableColumn fx:id="latchAddrTblCol" prefWidth="75.0" text="Location" />
+          <TableColumn fx:id="latchIdentifTblCol" prefWidth="75.0" text="Value" />
+        </columns>
+      </TableView>
+      <TextField text="Latch Table" GridPane.columnIndex="8" GridPane.columnSpan="5" GridPane.rowIndex="1" />
    </children>
 </GridPane>

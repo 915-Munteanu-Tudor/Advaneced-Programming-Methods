@@ -17,6 +17,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class MainGUI extends Application {
 
@@ -32,6 +33,7 @@ public class MainGUI extends Application {
             addStatementsToController();
             chooseProgramController.setMenuStage(primaryStage);
             Scene scene = new Scene(root, screenBounds.getWidth() /3, screenBounds.getHeight());
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("GUI/aplication.css")).toExternalForm());
             primaryStage.setTitle("Toy Language Menu");
             primaryStage.setScene(scene);
             primaryStage.setX(0);
@@ -52,6 +54,11 @@ public class MainGUI extends Application {
         chooseProgramController.addStatement(example5);
         chooseProgramController.addStatement(example6);
         chooseProgramController.addStatement(example7);
+        chooseProgramController.addStatement(example8);
+        chooseProgramController.addStatement(example9);
+        chooseProgramController.addStatement(example10);
+
+
     }
 
     private static final IStmt example1;
@@ -118,6 +125,192 @@ public class MainGUI extends Application {
                 new CompStmt(new PrintStmt(new VarExp("v")), new PrintStmt(new ReadHeapExp(new VarExp("a")))))))));
     }
 
+    private static final IStmt example8;
+
+    static {
+        example8 = new CompStmt(
+                new VarDeclStmt("v", new RefType(new IntType())), new CompStmt(new AllocateHeapStmt("v", new ValueExp(
+                new IntValue(20))), new CompStmt(new VarDeclStmt("a", new RefType(new RefType(new IntType()))),
+                new CompStmt(new AllocateHeapStmt("a", new VarExp("v")), new CompStmt(new AllocateHeapStmt("v",
+                new ValueExp(new IntValue(30))), new PrintStmt(new ReadHeapExp(new ReadHeapExp(new VarExp("a")))))))));
+    }
+
+    private static final IStmt example9;
+
+    static {
+        example9 = new CompStmt(
+                new VarDeclStmt(
+                        "a",
+                        new RefType(new IntType())
+                ),
+                new CompStmt(
+                        new VarDeclStmt(
+                                "b",
+                                new RefType(new IntType())
+                        ),
+                        new CompStmt(
+                                new VarDeclStmt(
+                                        "v",
+                                        new IntType()
+                                ),
+                                new CompStmt(
+                                        new AllocateHeapStmt(
+                                                "a",
+                                                new ValueExp(new IntValue(0))
+                                        ),
+                                        new CompStmt(
+                                                new AllocateHeapStmt(
+                                                        "b",
+                                                        new ValueExp(new IntValue(0))
+                                                ),
+                                                new CompStmt(
+                                                        new WriteHeapStmt("a",
+                                                                new ValueExp(new IntValue(1))
+                                                        ),
+                                                        new CompStmt(
+                                                                new WriteHeapStmt(
+                                                                        "b",
+                                                                        new ValueExp(new IntValue(2))
+                                                                ),
+                                                                new CompStmt(
+                                                                        new ConditionalAssignmentStmt(
+                                                                                "v",
+                                                                                new RelationalExpression(
+                                                                                        "<",
+                                                                                        new ReadHeapExp(new VarExp("a")),
+                                                                                        new ReadHeapExp(new VarExp("b"))
+                                                                                ),
+                                                                                new ValueExp(new IntValue(100)),
+                                                                                new ValueExp(new IntValue(200))
+                                                                        ),
+                                                                        new CompStmt(
+                                                                                new PrintStmt(new VarExp("v")),
+                                                                                new CompStmt(
+                                                                                        new ConditionalAssignmentStmt(
+                                                                                                "v",
+                                                                                                new RelationalExpression(
+                                                                                                        ">",
+                                                                                                        new ArithExp(
+                                                                                                                '-',
+                                                                                                                new ReadHeapExp(new VarExp("b")),
+                                                                                                                new ValueExp(new IntValue(2))
+                                                                                                        ),
+                                                                                                        new ReadHeapExp(new VarExp("a"))
+                                                                                                ),
+                                                                                                new ValueExp(new IntValue(100)),
+                                                                                                new ValueExp(new IntValue(200))
+                                                                                        ),
+                                                                                        new PrintStmt(new VarExp("v"))
+                                                                                )
+                                                                        )
+                                                                )
+
+                                                        )
+                                                )
+                                        )
+                                )
+                        )
+                )
+        );
+    }
+
+    private static final IStmt example10;
+
+    static {
+        example10 = new CompStmt(
+                new VarDeclStmt(
+                        "v1",
+                        new RefType(new IntType())
+                ),
+                new CompStmt(
+                        new VarDeclStmt(
+                                "v2",
+                                new RefType(new IntType())
+                        ),
+                        new CompStmt(
+                                new VarDeclStmt(
+                                        "v3",
+                                        new RefType(new IntType())
+                                ),
+                                new CompStmt(
+                                        new VarDeclStmt(
+                                                "cnt",
+                                                new IntType()
+                                        ),
+                                        new CompStmt(
+                                                new AllocateHeapStmt("v1", new ValueExp(new IntValue(2))),
+                                                new CompStmt(
+                                                        new AllocateHeapStmt("v2", new ValueExp(new IntValue(3))),
+                                                        new CompStmt(
+                                                                new AllocateHeapStmt("v3", new ValueExp(new IntValue(4))),
+                                                                new CompStmt(
+                                                                        new NewLatchStmt("cnt", new ReadHeapExp(new VarExp("v2"))),
+                                                                        new CompStmt(
+                                                                                new ForkStmt(
+                                                                                        new CompStmt(
+                                                                                                new WriteHeapStmt("v1", new ArithExp(
+                                                                                                        '*',
+                                                                                                        new ReadHeapExp(new VarExp("v1")),
+                                                                                                        new ValueExp(new IntValue(10))
+                                                                                                )),
+                                                                                                new CompStmt(
+                                                                                                        new PrintStmt(new ReadHeapExp(new VarExp("v1"))),
+                                                                                                        new CompStmt(
+                                                                                                                new CountDownStmt("cnt"),
+                                                                                                                new ForkStmt(
+                                                                                                                        new CompStmt(
+                                                                                                                                new WriteHeapStmt("v2", new ArithExp(
+                                                                                                                                        '*',
+                                                                                                                                        new ReadHeapExp(new VarExp("v2")),
+                                                                                                                                        new ValueExp(new IntValue(10))
+                                                                                                                                )),
+                                                                                                                                new CompStmt(
+                                                                                                                                        new PrintStmt(new ReadHeapExp(new VarExp("v2"))),
+                                                                                                                                        new CompStmt(
+                                                                                                                                                new CountDownStmt("cnt"),
+                                                                                                                                                new ForkStmt(
+                                                                                                                                                        new CompStmt(
+                                                                                                                                                                new WriteHeapStmt("v3", new ArithExp(
+                                                                                                                                                                        '*',
+                                                                                                                                                                        new ReadHeapExp(new VarExp("v3")),
+                                                                                                                                                                        new ValueExp(new IntValue(10))
+                                                                                                                                                                )),
+                                                                                                                                                                new CompStmt(
+                                                                                                                                                                        new PrintStmt(new ReadHeapExp(new VarExp("v3"))),
+                                                                                                                                                                        new CountDownStmt("cnt")
+                                                                                                                                                                )
+                                                                                                                                                        )
+                                                                                                                                                )
+                                                                                                                                        )
+                                                                                                                                )
+                                                                                                                        )
+                                                                                                                )
+                                                                                                        )
+                                                                                                )
+                                                                                        )
+                                                                                ),
+                                                                                new CompStmt(
+                                                                                        new AwaitStmt("cnt"),
+                                                                                        new CompStmt(
+                                                                                                new PrintStmt(new ValueExp(new IntValue(100))),
+                                                                                                new CompStmt(
+                                                                                                        new CountDownStmt("cnt"),
+                                                                                                        new PrintStmt(new ValueExp(new IntValue(100)))
+                                                                                                )
+                                                                                        )
+                                                                                )
+                                                                        )
+
+
+                                                                )
+                                                        )
+                                                )
+                                        )
+                                )
+                        )
+                )
+        );
+    }
 
 
     public static void main(String[] args) {
